@@ -1,1 +1,43 @@
 <p>form-imc works!</p>
+
+<div class="card">
+    <div class="card-header">
+      CALCULADORA IMC
+    </div>
+    <div class="card-body">
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" ([(ngModel)]="formIMC.peso")]>
+            <label for="floatingInput">Ingresa tu talla</label>
+          </div>
+          <div class="form-floating">
+            <input type="number" class="form-control" ([(ngModel)]="formIMC.talla")]>
+            <label for="floatingPassword">Ingresa tu peso</label>
+          </div>
+
+          <button type="button"  (click)="calcularIMC()"   class="btn btn-primary"> CALCULAR</button>
+          @if (mostrarMensaje) {
+            <div class="alert alert-primary" role="alert">
+                {{resultado}}
+              </div>
+          }
+          <hr />
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Valor IMC</th>
+                <th scope="col">DIAGNOSTICO</th>
+              </tr>
+            </thead>
+            <tbody>
+                @for (itemPaciente of pacientesList; track $index) {
+                    <tr>
+                        <th >{{itemPaciente.id}}</th>
+                        <td>{{itemPaciente.valor}}</td>
+                        <td>{{itemPaciente.diagnostico}}</td>
+                        
+                      </tr>
+                }
+            </tbody>
+          </table>
+    </div>
+  </div>
